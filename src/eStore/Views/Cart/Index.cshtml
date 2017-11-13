@@ -1,0 +1,63 @@
+﻿@model CartViewModel
+<div class="col-sm-3">&nbsp;</div>
+<div class="panel col-sm-6 col-xs-12">
+    <div class="panel-title text-center" style="padding-top:20px;">
+        <img src="~/img/shopping_cart.png" class="icon-image" />
+        <h3 style="font-weight:bolder">Your Shopping Cart</h3>
+    </div>
+    <div class="text-center" style="padding-top:10px;">
+        <table class="table table-striped">
+            <tr style="font-weight:bolder;">
+                <th class="col-xs-2 text-right">Code</th>
+                <th class="col-xs-4 text-right">Product Name</th>
+                <th class="col-xs-2 text-right">MSRP</th>
+                <th class="col-xs-2 text-right">Qty</th>
+                <th class="col-xs-2 text-right">Extended</th>
+            </tr>
+            @{
+                if (Model != null)
+                {
+                    foreach (var line_item in Model._cart_line_items)
+                    {
+                        if (line_item._line_qty > 0)
+                        {
+                            <tr>
+                                <td class="col-xs-2 text-right">@line_item._product_id</td>
+                                <td class="col-xs-4 text-right">@line_item._product_name</td>
+                                <td class="col-xs-2 text-right">@line_item._product_msrp</td>
+                                <td class="col-xs-2 text-right">@line_item._line_qty</td>
+                                <td class="col-xs-2 text-right">@line_item._line_extended</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </table>
+        <hr />
+        <table class="table">
+            <tr>
+                <td class="col-xs-10 text-right">Sub Total</td>
+                <td class="col-xs-2 text-right" id="cart-sub-total">@Model._cart_sub_total</td>
+            </tr>
+            <tr>
+                <td class="col-xs-10 text-right">Tax</td>
+                <td class="col-xs-2 text-right" id="cart-tax">@Model._cart_tax</td>
+            </tr>
+            <tr>
+                <td class="col-xs-10 text-right">Total</td>
+                <td class="col-xs-2 text-right" id="cart-total">@Model._cart_total</td>
+            </tr>
+        </table>
+        <div class="text-center">
+            <form asp-controller="Cart" asp-action="AddOrder" method="post" role="form">
+                @{
+                    if (Context.Session.GetString(SessionVars.User) != null)
+                    {
+                        <button type="submit" class="btn btn-sm btn-primary" id="modalbtn">Add Order</button>
+                    }
+                }
+                &nbsp;<a href="/Cart/ClearCart" class="btn btn-sm btn-danger">Clear Cart</a>
+            </form>
+        </div>
+    </div>
+</div>

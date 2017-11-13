@@ -1,0 +1,16 @@
+﻿$wine: darken(crimson, 15%);
+.some-class {
+font-family: Arial, Helvetica, sans-serif;
+position: relative;
+}
+.some-class-head {
+@extend .some-class;
+color: $wine;
+font-weight: bold;
+font-size:larger;
+}
+.some-class-body {
+@extend .some-class;
+color: $wine;
+font-weight: normal;
+}

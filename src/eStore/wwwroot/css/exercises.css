@@ -1,0 +1,14 @@
+.some-class, .some-class-head, .some-class-body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative; }
+
+.some-class-head {
+  color: #960e29;
+  font-weight: bold;
+  font-size: larger; }
+
+.some-class-body {
+  color: #960e29;
+  font-weight: normal; }
+
+#map_canvas img{max-width:none}

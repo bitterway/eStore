@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/min/exercises.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">INFO3067 Case Study</a>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <span class="pull-right" style="padding-right:5%;padding-top:1%;">@Context.Session.GetString(SessionVars.LoginStatus)</span>
+            <ul class="nav navbar-nav" id="menu">
+                <li><a href="/Home">Home</a></li>
+                <li><a href="/Register">Register</a></li>
+                <li><a href="/Login">Login</a></li>
+                <li><a href="/Brand">Brands</a></li>
+                <li><a href="/Data">Data Routines</a></li>
+                <li><a href="/Store">Stores</a></li>
+                <li><a href="/Login/Logoff">Logoff</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div style="padding-top:5%;">
+        @RenderBody()
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/estore.js"></script>
+</body>
+</html>
